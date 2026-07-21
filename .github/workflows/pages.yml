@@ -1,0 +1,48 @@
+name: Deploy Jana Study Navigator
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Reconstruct static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public
+          cat payload/part* | base64 --decode | gzip --decompress > public/index.html
+          touch public/.nojekyll
+          test "$(wc -c < public/index.html)" -eq 81685
+          grep -q "Janas Studien-Navigator 2026" public/index.html
+          grep -q "Learn Studio inspired Apple-like visual layer" public/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
