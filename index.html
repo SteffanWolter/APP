@@ -21,7 +21,7 @@
         if(!('DecompressionStream' in window))throw new Error('DecompressionStream unsupported');
         const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
         let html=await new Response(stream).text();
-        html=html.replace('</head>','<link rel="stylesheet" href="./fix.css?v=e6787902"></head>');
+        html=html.replace('</head>','<link rel="stylesheet" href="./fix.css?v=e6787902"><link rel="stylesheet" href="./hotfix.css?v=e0e00481"></head>');
         html=html.replace('<span style="color:var(--brand)">KI-robusten</span>','<span class="highlight">KI-robusten</span>');
         html=html.replace('<p style="color:var(--muted);margin-top:-6px">Ändert sich sofort mit den Reglern.</p>','<p class="muted-intro">Ändert sich sofort mit den Reglern.</p>');
         html=html.replace('<div style="margin-top:18px;padding:14px;border-radius:14px;background:var(--surface-2)">','<div class="reality-card">');
