@@ -4,13 +4,12 @@ Interaktive Studienwahl-Seite für zukunftsrobuste, nichttechnische Studiengäng
 
 ## Öffnen
 
-- GitHub Pages: https://steffanwolter.github.io/APP/
-- Direkte öffentliche Vorschau: https://raw.githack.com/SteffanWolter/APP/main/index.html
+**GitHub Pages:** https://steffanwolter.github.io/APP/
 
 ## Design
 
 Der visuelle Stil orientiert sich an Learn Studio: Apple-nahe Systemtypografie, warmes Off-White, große kompakte Headlines, weiche Lichtverläufe, Glassmorphism, großzügige Rundungen und zurückhaltende Schatten.
 
-## Deployment
+## GitHub Pages
 
-Der Workflow `.github/workflows/pages.yml` rekonstruiert die vollständige statische Seite, prüft ihre Integrität und deployt sie als GitHub Pages Artifact.
+Die Seite ist vollständig statisch und liegt im Root des `main`-Branches. In den Repository-Einstellungen wird unter **Settings → Pages** als Quelle **Deploy from a branch**, Branch **main** und Ordner **/(root)** gewählt.
