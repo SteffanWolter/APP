@@ -26,6 +26,7 @@
         html=html.replace('<p style="color:var(--muted);margin-top:-6px">Ändert sich sofort mit den Reglern.</p>','<p class="muted-intro">Ändert sich sofort mit den Reglern.</p>');
         html=html.replace('<div style="margin-top:18px;padding:14px;border-radius:14px;background:var(--surface-2)">','<div class="reality-card">');
         html=html.replace('<div style="color:var(--muted);font-size:.82rem">${escapeHtml(p.badge)}</div>','<div class="personal-sub">${escapeHtml(p.badge)}</div>');
+        html=html.replace(/\s*<div class="notice">\s*<strong>Körpergröße ist hier kein fachliches Kriterium\.<\/strong>[\s\S]*?<\/div>/,'');
         const mobileNav='<nav class="mobile-nav" aria-label="Mobile Navigation"><a href="#ranking"><span class="nav-icon">◎</span><span>Rangliste</span></a><a href="#quiz"><span class="nav-icon">◇</span><span>Test</span></a><a href="#vergleich"><span class="nav-icon">⇄</span><span>Vergleich</span></a><a href="#quellen"><span class="nav-icon">≡</span><span>Quellen</span></a></nav>';
         html=html.replace('<div id="actionBar" class="action-bar"',mobileNav+'<div id="actionBar" class="action-bar"');
         document.open();document.write(html);document.close();
